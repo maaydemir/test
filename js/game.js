@@ -2,6 +2,8 @@ const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const startBtn = document.getElementById('start-btn');
 const scoreDisplay = document.getElementById('score');
+const gameOverScreen = document.getElementById('game-over');
+const restartBtn = document.getElementById('restart-btn');
 
 let running = false;
 let score = 0;
@@ -10,6 +12,14 @@ let spawnCounter = 0;
 const obstacles = [];
 const groundHeight = 20;
 const gameSpeed = 6;
+
+function showGameOver() {
+    gameOverScreen.style.display = 'flex';
+}
+
+function hideGameOver() {
+    gameOverScreen.style.display = 'none';
+}
 
 const dinosaur = {
     x: 50,
@@ -32,7 +42,7 @@ function spawnObstacle() {
         x: canvas.width,
         y: canvas.height - height - groundHeight,
         width: 15,
-        height
+        height: height
     });
 }
 
@@ -130,6 +140,7 @@ function startGame() {
         running = true;
         score = 0;
         resetDinoPosition();
+        hideGameOver();
         draw();
     }
 }
@@ -137,6 +148,15 @@ function startGame() {
 function stopGame() {
     running = false;
     cancelAnimationFrame(frameId);
+    showGameOver();
+}
+
+function restartGame() {
+    obstacles.length = 0;
+    spawnCounter = 0;
+    hideGameOver();
+    startGame();
+    startBtn.textContent = 'Stop';
 }
 
 startBtn.addEventListener('click', () => {
@@ -155,3 +175,5 @@ canvas.addEventListener('click', () => {
         dinosaur.isJumping = true;
     }
 });
+
+restartBtn.addEventListener('click', restartGame);
