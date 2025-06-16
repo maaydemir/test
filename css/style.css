@@ -34,3 +34,8 @@ body {
 #start-btn {
     padding: 5px 10px;
 }
+
+#instructions {
+    margin-top: 10px;
+    text-align: center;
+}
