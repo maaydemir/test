@@ -7,16 +7,48 @@ let running = false;
 let score = 0;
 let frameId;
 
+const dinosaur = {
+    x: 50,
+    y: 0,
+    width: 40,
+    height: 40,
+    velocityY: 0,
+    jumpPower: 15,
+    gravity: 0.8,
+    isJumping: false
+};
+
+function resetDinoPosition() {
+    dinosaur.y = canvas.height - dinosaur.height - 20;
+}
+
 function clearCanvas() {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+function updateDino() {
+    if (dinosaur.isJumping) {
+        dinosaur.y += dinosaur.velocityY;
+        dinosaur.velocityY += dinosaur.gravity;
+        const ground = canvas.height - dinosaur.height - 20;
+        if (dinosaur.y >= ground) {
+            dinosaur.y = ground;
+            dinosaur.velocityY = 0;
+            dinosaur.isJumping = false;
+        }
+    }
+}
+
+function drawDino() {
+    ctx.fillStyle = '#333';
+    ctx.fillRect(dinosaur.x, dinosaur.y, dinosaur.width, dinosaur.height);
+}
+
 function draw() {
     clearCanvas();
-    // Placeholder for drawing the dinosaur, obstacles, etc.
-    ctx.fillStyle = '#333';
-    ctx.fillRect(50, canvas.height - 60, 40, 40); // simple square dinosaur
+    updateDino();
+    drawDino();
 
     score += 1;
     scoreDisplay.textContent = score;
@@ -28,6 +60,7 @@ function startGame() {
     if (!running) {
         running = true;
         score = 0;
+        resetDinoPosition();
         draw();
     }
 }
@@ -44,5 +77,12 @@ startBtn.addEventListener('click', () => {
     } else {
         startGame();
         startBtn.textContent = 'Stop';
+    }
+});
+
+canvas.addEventListener('click', () => {
+    if (!dinosaur.isJumping) {
+        dinosaur.velocityY = -dinosaur.jumpPower;
+        dinosaur.isJumping = true;
     }
 });

@@ -80,4 +80,5 @@ assets/           # Placeholder directory for images and sounds
 ```
 
 Open `index.html` in a modern browser to run the current prototype. The game logic is intentionally simple and serves as a starting point for future enhancements described above.
+Click on the canvas to make the dinosaur jump.
 
