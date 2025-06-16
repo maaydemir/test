@@ -65,3 +65,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Project Structure
+
+The repository includes a basic web application setup:
+
+```
+index.html        # Main game page
+css/style.css     # Styles for the user interface and canvas
+js/game.js        # Core game logic
+assets/           # Placeholder directory for images and sounds
+```
+
+Open `index.html` in a modern browser to run the current prototype. The game logic is intentionally simple and serves as a starting point for future enhancements described above.
+
