@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    position: relative;
+}
+
+#game-canvas {
+    background-color: #fff;
+    border: 1px solid #333;
+}
+
+#ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+#score {
+    font-size: 20px;
+}
+
+#start-btn {
+    padding: 5px 10px;
+}
